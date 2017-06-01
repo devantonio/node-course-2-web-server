@@ -1,12 +1,21 @@
+//IN PACKAGE.JSON for heroku to run server.js//heroku will look for the start script 
+//and the start script will be responsable for running server.js 
+
 //WHEN RUNNING PARTIALS IN SERVER 
 //nodemon server.js -e js,hbs
 //we're gonna watch(-e) the js extension and the hbs extension
 //middleware is executed in the order you call app.use
+//to communicate with my machine and github i hae to use sshkey
+//sshkey is use to communicate between two computers
 
 const express = require('express');
 const handlebars = require('hbs');
 const fs = require('fs');
 
+//heroku is going to set port. the port will change over time//when we run the app locally the 
+//port env variable is not going to exist// if thats the case then use port 3000
+//now we have an app that is configured with heroku and will still work locally
+const port = process.env.PORT || 3000;
 var app = express();
 
 //let handlebars know we want to set up support for partials
@@ -88,6 +97,6 @@ app.get('/bad', (req, res) => {
 	});
 });
 
-app.listen(3000, () => {// app.listen takes a optional 2nd argument that lets us do something once the server is up
-	console.log('server is up on port 3000'); 
+app.listen(port, () => {// app.listen takes a optional 2nd argument that lets us do something once the server is up
+	console.log(`server is up on port ${port}`); 
 });
