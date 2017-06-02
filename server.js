@@ -80,7 +80,7 @@ app.get('/', (req, res) => {// forward slash is refered to s the root route
 	// });
 	res.render('home.hbs', {
 		pageTitle: 'Home',
-		welcomeMessage: 'Welcome to my home page!'
+		welcomeMessage: 'Welcome to my home page!!!'
 	});
 });
 
@@ -89,6 +89,12 @@ app.get('/about', (req, res) => {
 	res.render('about.hbs', {
 		pageTitle: 'About Page'
 	});//render is going to let you set up any templates you have set up with your current view engine
+});
+
+app.get('/projects', (req, res) => {
+	res.render('projects.hbs', {
+		pageTitle: 'Projects'
+	});
 });
 
 app.get('/bad', (req, res) => {
